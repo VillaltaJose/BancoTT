@@ -10,6 +10,8 @@ import { ProductoService } from 'src/app/shared/services/productos/producto.serv
 export class ListarProductosComponent implements OnInit {
 	productos: Producto[] = [];
 
+	busqueda: string = '';
+
 	constructor(
 		private _productoService: ProductoService,
 	) { }
