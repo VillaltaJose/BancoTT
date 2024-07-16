@@ -1,6 +1,37 @@
-<ng-container *ngFor="let p of productos">
-	<div>
-		<img [src]="p.logo">
-		<p>{{ p.name }}</p>
-	</div>
-</ng-container>
+<div class="max-container" style="--max-width: 120rem">
+	<input type="text" placeholder="Search..." style="width: 25rem; margin-bottom: 2rem;">
+
+	<app-table #table [bData]="productos">
+		<thead>
+			<tr>
+				<th style="text-align: center;">Logo</th>
+				<th>Nombre del producto</th>
+				<th>Descripción</th>
+				<th>Fecha de liberación</th>
+				<th>Fecha de reestructuración</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<ng-container *ngFor="let p of table.data">
+				<tr>
+					<td>
+						<img [src]="p.logo">
+					</td>
+					<td>
+						{{ p.name }}
+					</td>
+					<td>
+						{{ p.description }}
+					</td>
+					<td>
+						{{ p.date_release | date:'dd/MM/yyyy' }}
+					</td>
+					<td>
+						{{ p.date_revision | date:'dd/MM/yyyy' }}
+					</td>
+				</tr>
+			</ng-container>
+		</tbody>
+	</app-table>
+</div>

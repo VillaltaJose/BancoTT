@@ -1,0 +1,34 @@
+.b-table {
+	width: 100%;
+	background: #FFF;
+	padding: 1.6rem;
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	.b-table-footer {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2rem;
+		align-items: center;
+	}
+}
+
+:host ::ng-deep .b-table table {
+	th {
+		background: var(--background-color);
+		font-weight: 500;
+	}
+
+	tr {
+		border-bottom: 0.1rem solid var(--border-color);
+	}
+
+	th, td {
+		padding: 0.8rem 1.2rem;
+		text-align: left;
+	}
+}
