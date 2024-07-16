@@ -1,0 +1,35 @@
+<form [formGroup]="formRegistro" class="max-container form-registro" style="--max-width: 70rem;">
+	<h1>Formulario Registro</h1>
+
+	<div class="form-content">
+		<div class="form-element form-6">
+			<label for="">ID</label>
+			<input formControlName="id" type="text">
+		</div>
+		<div class="form-element form-6">
+			<label for="">Nombre</label>
+			<input formControlName="name" type="text">
+		</div>
+		<div class="form-element form-6">
+			<label for="">Descripción</label>
+			<input formControlName="description" type="text">
+		</div>
+		<div class="form-element form-6">
+			<label for="">Logo</label>
+			<input formControlName="logo" type="text">
+		</div>
+		<div class="form-element form-6">
+			<label for="">Fecha liberación</label>
+			<input formControlName="date_release" type="date">
+		</div>
+		<div class="form-element form-6">
+			<label for="">Fecha revisión</label>
+			<input formControlName="date_revision" type="date">
+		</div>
+
+		<div class="form-element form-12 buttons-group">
+			<button (click)="reiniciarForm()" type="button">Reiniciar</button>
+			<button (click)="registrarProducto()" [disabled]="formRegistro.invalid" type="button" class="btn-primary">Enviar</button>
+		</div>
+	</div>
+</form>

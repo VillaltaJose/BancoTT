@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100..900');
 
 :root {
-	--primary: rgb(243, 213, 41);
+	--primary: rgb(255, 223, 45);
 	--primary-shade: rgb(255, 232, 104);
 	--primary-accent: rgb(21, 44, 96);
 	--text-color: #2d2e30;
 	--background-color: rgb(244, 246, 249);
+	--background-shade-color: rgb(233, 236, 240);
 	--border-color: rgb(225, 229, 235);
 	--font-family: "Bitter", serif;
+
+	--background-disabled-color: rgb(247, 247, 247);
+	--border-disabled-color: rgb(210, 215, 221);
+	--disabled-color: rgb(125, 133, 142);
+
+	--error-border-color: rgb(221, 17, 45);
+	--error-color: rgb(221, 17, 45);
 }
 
 * {
@@ -33,34 +41,107 @@ body {
 	max-width: var(--max-width);
 }
 
+h1, h2, h3, h4, h5 {
+	font-weight: 600;
+}
+
 p, span, a, label, b, th, td {
 	font-size: 1.4rem;
+	font-weight: 450;
 }
 
 input, select, textarea, button, .input {
+	--color: var(--text-color);
+	--background: #FFF;
+	--active-border-color: var(--primary-accent);
+
 	padding: 1.2rem 1.2rem;
 	border: 0.1rem solid var(--border-color);
 	border-radius: 0.8rem;
 	background: #FFF;
+	font-weight: 450;
+	color: var(--color);
+	background: var(--background);
 
 	&:focus, &:active {
-		border-color: var(--primary-accent);
-		outline: 0.1rem solid var(--primary-accent);
+		border-color: var(--active-border-color);
+		outline: 0.1rem solid var(--active-border-color);
+	}
+
+	&:disabled {
+		--background: var(--background-disabled-color);
+		--active-border-color: var(--border-disabled-color);
+		--border-color: var(--border-disabled-color);
+		--color: var(--disabled-color);
+		cursor: not-allowed;
 	}
 }
 
-.input-sm {
+input, select, textarea, .input {
+	&.ng-invalid.ng-touched, &.ng-invalid.ng-dirty {
+		--border-color: var(--error-border-color);
+		--active-border-color: var(--error-border-color);
+		--color: var(--error-color);
+	}
+}
+
+.input-sm, .btn-sm {
 	padding: 0.8rem 1rem;
 	border-radius: 0.6rem;
+}
+
+button, .btn {
+	cursor: pointer;
+	--background: var(--background-color);
+	--color: var(--primary-accent);
+
+	&:hover {
+		--background: var(--background-shade-color);
+	}
 }
 
 .btn-primary {
 	background: var(--primary);
 	color: var(--primary-accent);
+	border-color: var(--primary);
 	font-weight: 500;
 	cursor: pointer;
 
 	&:hover {
 		background: var(--primary-shade);
+	}
+
+	&:disabled {
+		opacity: 0.7;
+	}
+}
+
+.form-content {
+	display: grid;
+  	grid-template-columns: repeat(12, 1fr);
+	gap: 1.5rem;
+
+	.form-element {
+		label {
+			display: block;
+			font-size: 1.3rem;
+			margin-bottom: 0.6rem;
+		}
+
+		input, select, textarea {
+			width: 100%;
+		}
+	}
+
+	.form-4 {
+		grid-column: span 4;
+	}
+
+	.form-6 {
+		grid-column: span 6;
+	}
+
+	.form-12 {
+		grid-column: span 12;
 	}
 }

@@ -1,5 +1,9 @@
 <div class="max-container" style="--max-width: 120rem">
-	<input type="text" placeholder="Search..." style="width: 25rem; margin-bottom: 2rem;">
+	<div>
+		<input type="text" placeholder="Search..." style="width: 25rem; margin-bottom: 2rem;">
+
+		<button routerLink="nuevo" class="btn-primary">Agregar</button>
+	</div>
 
 	<app-table #table [bData]="productos">
 		<thead>
