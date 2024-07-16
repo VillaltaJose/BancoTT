@@ -1,0 +1,22 @@
+header {
+	width: 100%;
+	background: #FFF;
+	height: 8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 0.1rem solid var(--border-color);
+	gap: 2rem;
+
+	label {
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--primary);
+		display: block;
+	}
+
+	img {
+		display: block;
+		height: 2.6rem;
+	}
+}
