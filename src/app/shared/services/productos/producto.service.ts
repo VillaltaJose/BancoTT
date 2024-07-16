@@ -14,4 +14,8 @@ export class ProductoService {
 	obtenerProductos() {
 		return this._http.get<Respuesta<Producto[]>>('products');
 	}
+
+	registrarProducto(producto: Producto) {
+		return this._http.post<Respuesta<Producto>>('products', producto)
+	}
 }
