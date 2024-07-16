@@ -18,4 +18,8 @@ export class ProductoService {
 	registrarProducto(producto: Producto) {
 		return this._http.post<Respuesta<Producto>>('products', producto)
 	}
+
+	eliminarProducto(id: string) {
+		return this._http.delete<Respuesta<null>>(`products/${id}`)
+	}
 }

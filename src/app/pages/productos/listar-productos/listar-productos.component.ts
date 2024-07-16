@@ -30,4 +30,12 @@ export class ListarProductosComponent implements OnInit {
 		});
 	}
 
+	eliminar(id: string) {
+		this._productoService.eliminarProducto(id)
+		.subscribe(resp => {
+			console.log(resp);
+			this.obtenerProductos();
+		})
+	}
+
 }

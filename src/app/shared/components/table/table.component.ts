@@ -13,7 +13,18 @@ export class TableComponent<T> {
 	data: T[] = [];
 
 	ngOnChanges() {
+		this.changePage(1);
+	}
+
+	changePage(pageNumber: number) {
+		this.pageNumber = pageNumber;
+
 		this.data = this.bData.slice((this.pageNumber - 1) * this.pageSize, this.pageNumber * this.pageSize);
+	}
+
+	changePageSize(pageSize: number) {
+		this.pageSize = pageSize;
+		this.changePage(this.pageNumber);
 	}
 
 }

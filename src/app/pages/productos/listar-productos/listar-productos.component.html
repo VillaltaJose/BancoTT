@@ -1,6 +1,6 @@
 <div class="max-container" style="--max-width: 120rem">
-	<div>
-		<input [(ngModel)]="busqueda" type="text" placeholder="Search..." style="width: 25rem; margin-bottom: 2rem;">
+	<div class="options-bar">
+		<input [(ngModel)]="busqueda" type="text" placeholder="Search..." style="width: 25rem;">
 
 		<button routerLink="nuevo" class="btn-primary">Agregar</button>
 	</div>
@@ -13,6 +13,7 @@
 				<th>Descripción</th>
 				<th>Fecha de liberación</th>
 				<th>Fecha de reestructuración</th>
+				<th></th>
 			</tr>
 		</thead>
 
@@ -33,6 +34,9 @@
 					</td>
 					<td>
 						{{ p.date_revision | date:'dd/MM/yyyy' }}
+					</td>
+					<td>
+						<button (click)="eliminar(p.id)" class="btn-danger">Eliminar</button>
 					</td>
 				</tr>
 			</ng-container>
