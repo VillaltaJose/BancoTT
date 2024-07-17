@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
 import { Producto } from 'src/app/models/producto';
+import { RespuestaError } from 'src/app/models/respuesta';
 import { ProductoService } from 'src/app/shared/services/productos/producto.service';
 
 @Component({
@@ -71,6 +72,8 @@ export class NuevoProductoComponent {
 		.subscribe(resp => {
 			console.log(resp);
 			this.reiniciarForm();
+		}, (error: RespuestaError) => {
+			this.errors.push(error.message);
 		})
 	}
 
