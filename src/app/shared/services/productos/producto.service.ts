@@ -22,4 +22,12 @@ export class ProductoService {
 	eliminarProducto(id: string) {
 		return this._http.delete<Respuesta<null>>(`products/${id}`)
 	}
+
+	obtenerProducto(id: string) {
+		return this._http.get<Respuesta<boolean>>(`products/${id}`)
+	}
+
+	verificarExistencia(id: string) {
+		return this._http.get<boolean>(`products/verification/${id}`)
+	}
 }

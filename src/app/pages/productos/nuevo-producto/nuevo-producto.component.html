@@ -2,29 +2,112 @@
 	<h1>Formulario Registro</h1>
 
 	<div class="form-content">
+		<div *ngIf="errors.length > 0" class="error-alert">
+			<ng-container *ngFor="let e of errors">
+				<p class="error-message">{{ e }}</p>
+			</ng-container>
+		</div>
+
 		<div class="form-element form-6">
 			<label for="">ID</label>
 			<input formControlName="id" type="text">
+			<app-form-error [control]="formRegistro.get('id')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+					{
+						error: 'minlength',
+						message: 'El ID debe tener mínimo 3 caracteres'
+					},
+					{
+						error: 'maxlength',
+						message: 'El ID debe tener máximo 10 caracteres'
+					},
+				]"
+				></app-form-error>
 		</div>
 		<div class="form-element form-6">
 			<label for="">Nombre</label>
 			<input formControlName="name" type="text">
+			<app-form-error [control]="formRegistro.get('name')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+					{
+						error: 'minlength',
+						message: 'El Nombre debe tener mínimo 5 caracteres'
+					},
+					{
+						error: 'maxlength',
+						message: 'El Nombre debe tener máximo 100 caracteres'
+					},
+				]"
+				></app-form-error>
 		</div>
 		<div class="form-element form-6">
 			<label for="">Descripción</label>
 			<input formControlName="description" type="text">
+			<app-form-error [control]="formRegistro.get('description')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+					{
+						error: 'minlength',
+						message: 'La descripción debe tener mínimo 10 caracteres'
+					},
+					{
+						error: 'maxlength',
+						message: 'La descripción debe tener máximo 200 caracteres'
+					},
+				]"
+				></app-form-error>
 		</div>
 		<div class="form-element form-6">
 			<label for="">Logo</label>
 			<input formControlName="logo" type="text">
+			<app-form-error [control]="formRegistro.get('logo')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+				]"
+				></app-form-error>
 		</div>
 		<div class="form-element form-6">
 			<label for="">Fecha liberación</label>
-			<input formControlName="date_release" type="date">
+			<input (blur)="checkDateValidation()" formControlName="date_release" type="date"
+				min="{{ today | date:'yyyy-MM-dd' }}">
+			<app-form-error [control]="formRegistro.get('date_release')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+				]"
+				></app-form-error>
 		</div>
 		<div class="form-element form-6">
 			<label for="">Fecha revisión</label>
-			<input formControlName="date_revision" type="date">
+			<input (blur)="checkDateValidation()" formControlName="date_revision" type="date">
+			<app-form-error [control]="formRegistro.get('date_revision')"
+				[errors]="[
+					{
+						error: 'required',
+						message: 'El campo es requerido'
+					},
+					{
+						error: 'InvalidDate',
+						message: 'La fecha de revisión debe ser 1 año mayor a la de liberación'
+					},
+				]"
+				></app-form-error>
 		</div>
 
 		<div class="form-element form-12 buttons-group">

@@ -15,6 +15,7 @@
 	--disabled-color: rgb(125, 133, 142);
 
 	--error-border-color: rgb(221, 17, 45);
+	--error-background-color: rgb(255, 237, 239);
 	--error-color: rgb(221, 17, 45);
 }
 
@@ -131,6 +132,13 @@ button, .btn {
 		input, select, textarea {
 			width: 100%;
 		}
+
+		.form-error {
+			color: var(--error-color);
+			font-size: 1.3rem;
+			margin-top: 0.4rem;
+			display: block;
+		}
 	}
 
 	.form-4 {
@@ -143,5 +151,27 @@ button, .btn {
 
 	.form-12 {
 		grid-column: span 12;
+	}
+}
+
+.error-alert {
+	border: 0.1rem solid var(--error-color);
+	background: var(--error-background-color);
+	color: #FFF;
+	padding: 1.2rem 1.2rem;
+	border-radius: 0.6rem;
+	margin-bottom: 1.2rem;
+	width: 100%;
+	grid-column: span 12;
+
+	p {
+		color: var(--error-color);
+		font-size: 1.3rem;
+		margin-top: 0.4rem;
+		display: block;
+
+		&:first-child {
+			margin-top: 0;
+		}
 	}
 }

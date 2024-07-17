@@ -1,0 +1,9 @@
+<ng-container *ngIf="control">
+	<ng-container *ngIf="(control.touched && control.invalid) || control.dirty">
+		<ng-container *ngFor="let e of errors">
+			<ng-container *ngIf="control.hasError(e.error)">
+				<p class="form-error">{{ e.message }}</p>
+			</ng-container>
+		</ng-container>
+	</ng-container>
+</ng-container>
