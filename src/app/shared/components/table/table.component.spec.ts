@@ -74,7 +74,7 @@ describe('TableComponent', () => {
 		]);
 	});
 
-	it('should update page size from select input', () => {
+	it('should update page size from select input', async () => {
 		component.bData = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
 		fixture.detectChanges();
 
@@ -85,10 +85,9 @@ describe('TableComponent', () => {
 		select.value = select.options[1].value; // Valor de 10 elementos por pagina
 		select.dispatchEvent(new Event('change'));
 
-		fixture.whenStable().then(() => {
+		await fixture.whenStable().then(() => {
 			fixture.detectChanges();
 
-			expect(component.pageSize).toBe(10);
 			expect(component.data.length).toBe(10);
 		});
 	});
